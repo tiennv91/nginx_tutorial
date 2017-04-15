@@ -1,15 +1,15 @@
-## NGINX SELF TRAINING
+# NGINX SELF TRAINING
 
-## Dependences
-# Install docker
-# Install docker-compose
+# Dependences
+- Install docker
+- Install docker-compose
 
-# Start
+## Start
 - docker-compose up
 - docker-compose exec server_1 bash
 - rails db:create
 
-# Open browser:
+## Open browser:
 - Load Balancer Server: localhost: 3001
 - Server 1: localhost:3002
 - Server 2: localhost:3003
