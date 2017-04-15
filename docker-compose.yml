@@ -1,0 +1,55 @@
+version: '2'
+services:
+  load_balancer_server:
+    build:
+      context: /Users/tiennv/workspaces/nginx_tutorial/load_balancer_server/
+      dockerfile: Dockerfile
+    container_name: 'LoadBalancerServer'
+    ports:
+      - '3001:3000'
+    tty: true
+    volumes:
+      - /Users/tiennv/workspaces/nginx_tutorial/load_balancer_server:/myapp
+    networks:
+      - datastore
+      - app
+  server_1:
+      build:
+        context: /Users/tiennv/workspaces/nginx_tutorial/server_1/
+        dockerfile: Dockerfile
+      container_name: 'Server1'
+      command: bundle exec rails s -b '0.0.0.0'
+      ports:
+        - '3002:3000'
+      depends_on:
+        - db
+      volumes:
+        - /Users/tiennv/workspaces/nginx_tutorial/server_1:/myapp
+      # tty: true
+      networks:
+        - datastore
+        - app
+  server_2:
+      build:
+        context: /Users/tiennv/workspaces/nginx_tutorial/server_2/
+        dockerfile: Dockerfile
+      container_name: 'Server2'
+      command: bundle exec rails s -b '0.0.0.0'
+      ports:
+        - '3003:3000'
+      depends_on:
+        - db
+      volumes:
+        - /Users/tiennv/workspaces/nginx_tutorial/server_2:/myapp
+      # tty: true
+      networks:
+        - datastore
+        - app
+  db:
+    image: postgres
+    container_name: 'db'
+    networks:
+      - datastore
+networks:
+  app:
+  datastore:
