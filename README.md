@@ -10,6 +10,8 @@
 - rails db:create
 
 ## Open browser:
-- Load Balancer Server: localhost: 3001
+- Load Balancer Server: localhost:3001
 - Server 1: localhost:3002
 - Server 2: localhost:3003
+
+# [Install Nginx](NGINX_Install.md)
