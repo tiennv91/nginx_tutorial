@@ -78,6 +78,13 @@ _**Note:**_ If you have received a message: `nginx: command not found`. Please a
 export PATH=$PATH:/usr/local/nginx
 ```
 
+**Create initscript**
+
+[initscript](initscript.md)
+```
+chmod u+w /etc/init.d/nginx
+```
+
 ## Installing a Pre-Built Package
 References: https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/
 ### Installing Red Hat/CentOS Packages
